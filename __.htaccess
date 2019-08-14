@@ -1,0 +1,33 @@
+#listing semua file yg ada di dlm folder
+Options +Indexes
+IndexOptions FancyIndexing
+
+# file pertama diload ketika masuk kefolder yg ada ada .htaccess 
+DirectoryIndex main.php
+
+# utk mengabaikan pembacaan file dengan extensi .txt dan ico
+IndexIgnore *.txt *.ico
+
+# utk membuat suatu file dengan extensi tertentu terbaca dengan didlmnya ada syntax php language bisa pake ini
+AddType application/x-httpd-php .jesse
+
+#utk securitas file kita bisa buat semua org tidak bisa akses atau melihat file ini dengan cara tag files
+<files test.txt>
+	#tidak boleh ada spasi setelah komma (,)
+	order allow,deny
+	deny from all
+</files>
+
+#utk menhidden atau mengallow user utk akses file dengan beberapa extensi tertentu, disini kita tidak bisa lihat file dngn extensi .txt dan .ico
+<FilesMatch "\.(txt|ico)$">
+	order allow,deny
+	deny from all
+</FilesMatch>
+
+#utk tidak meload semua data tinggal
+#IndexIgnore *
+
+#
+
+#default carakter set 
+AddDefaultCharset utf-8
